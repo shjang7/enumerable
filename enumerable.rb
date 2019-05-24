@@ -59,13 +59,10 @@ module Enumerable
     end
     new_arr
   end
-  def my_inject
-    curr = self[0]
-    self.my_each_with_index do |element, index|
-      if 0==index
-        next
-      end
-      curr = yield(curr,element)
+  def my_inject(stable)
+    for i in 0...self.length
+      stable = yield(stable,self[i])
     end
+    stable
   end
 end

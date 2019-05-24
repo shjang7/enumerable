@@ -70,4 +70,17 @@ multiple = sample_arr.my_map do |p|
 end
 print multiple
 
+sample_arr = [2,4,3]
+print "\nchanged array: #{sample_arr}"
+
+print "\nMy_inject(multiply all) : "
+def multiply_else(arr)
+  result = arr.my_inject(1) do |stable,curr|
+    stable*curr
+  end
+  result
+end
+print multiply_else(sample_arr)
+
+
 puts "\nend"
