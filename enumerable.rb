@@ -18,7 +18,7 @@ module Enumerable
   end
 
   def my_all?
-    return false if self.length==0
+    return false if 0 == self.length
     cnt = self.length
     for i in 0...self.length
       if true == yield(self[i])
@@ -29,7 +29,7 @@ module Enumerable
   end
 
   def my_any?
-    return false if self.length==0
+    return false if 0 == self.length
     possible = false
     for i in 0...self.length
       if true == yield(self[i])
