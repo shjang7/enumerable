@@ -15,9 +15,13 @@ module Enumerable
     end
   end
   def my_all?
-    for i in 0...arr.length
-      yield
+    cnt = self.length
+    for i in 0...self.length
+      if true == yield(self[i])
+        cnt-=1
+      end
     end
+    cnt==0
   end
   def my_any?
     for i in 0...arr.length

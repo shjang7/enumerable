@@ -17,7 +17,19 @@ end
 
 print "\nMy_select : "
 sample_arr.my_select do |p|
-  print "#{p} " if p%2 == 0
+  print "#{p} " if 0 == p%2
 end
+
+print "\nMy_all(even?) : "
+all_true = sample_arr.my_all? do |p|
+  0 == p%2
+end
+print (true==all_true)?true:false
+
+print "\nMy_all(smaller than 10?) : "
+all_true = sample_arr.my_all? do |p|
+  p<10
+end
+print (true==all_true)?true:false
 
 puts "\nend"
