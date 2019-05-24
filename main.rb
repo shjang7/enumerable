@@ -5,4 +5,8 @@ def multiply_else(arr)
 end
 
 #puts multiply_else([2,4,5])
-[1,2,3].my_each{ |p| puts p}
+sample_arr = [9,6,3,2]
+sample_arr.my_each{ |p| puts p}
+sample_arr.my_each_with_index do |p,i|
+  puts "#{p}:#{i}"
+end
