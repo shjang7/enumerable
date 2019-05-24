@@ -52,10 +52,14 @@ module Enumerable
     end
     cnt
   end
-  def my_map
+  def my_map(proc=nil)
     new_arr=[]
     for i in 0...self.length
-      new_arr << yield(self[i])
+      if nil != proc
+        new_arr << proc.call(self[i])
+      else
+        new_arr << yield(self[i])
+      end
     end
     new_arr
   end

@@ -70,6 +70,7 @@ multiple = sample_arr.my_map do |p|
 end
 print multiple
 
+#change array
 sample_arr = [2,4,3]
 print "\nchanged array: #{sample_arr}"
 
@@ -82,5 +83,8 @@ def multiply_else(arr)
 end
 print multiply_else(sample_arr)
 
+print "\nMy_map(with proc, x3) : "
+multiply_3 = Proc.new{ |p| p*3 }
+print sample_arr.my_map(multiply_3)
 
 puts "\nend"
