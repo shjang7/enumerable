@@ -4,17 +4,21 @@ module Enumerable
       yield(self[i])
     end
   end
+
   def my_each_with_index
     for i in 0...self.length
       yield(self[i],i)
     end
   end
+
   def my_select
     for i in 0...self.length
       yield(self[i])
     end
   end
+
   def my_all?
+    return false if self.length==0
     cnt = self.length
     for i in 0...self.length
       if true == yield(self[i])
@@ -23,7 +27,9 @@ module Enumerable
     end
     0 == cnt
   end
+
   def my_any?
+    return false if self.length==0
     possible = false
     for i in 0...self.length
       if true == yield(self[i])
@@ -33,6 +39,7 @@ module Enumerable
     end
     possible
   end
+
   def my_none?
     none = true
     for i in 0...self.length
@@ -43,6 +50,7 @@ module Enumerable
     end
     none
   end
+
   def my_count
     cnt=0
     for i in 0...self.length
@@ -52,6 +60,7 @@ module Enumerable
     end
     cnt
   end
+
   def my_map(proc=nil)
     new_arr=[]
     for i in 0...self.length
@@ -63,6 +72,7 @@ module Enumerable
     end
     new_arr
   end
+
   def my_inject(stable)
     for i in 0...self.length
       stable = yield(stable,self[i])

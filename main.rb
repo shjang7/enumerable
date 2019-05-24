@@ -1,7 +1,9 @@
 require "./enumerable.rb"
+#include Enumerable
 
 =begin
 ** test case
+[2,3,4,5,6,7,9]
 [9,8,7,6,5,4,3,2,1]
 [9,8,7,6,4,3,2,1] ->0== val%5?
 [8,6,4,2] -> even?
@@ -12,6 +14,7 @@ require "./enumerable.rb"
 [10,5] -> 0== val%5?
 [] -> ?
 =end
+
 sample_arr = [2,3,4,5,6,7,9]
 
 print "My_each : "
@@ -22,7 +25,7 @@ sample_arr.my_each_with_index do |p,i|
   print "#{p}:#{i} "
 end
 
-print "\nMy_select : "
+print "\nMy_select(even) : "
 sample_arr.my_select do |p|
   print "#{p} " if 0 == p%2
 end
@@ -39,8 +42,7 @@ all_true = sample_arr.my_all? do |p|
 end
 print (true==all_true)?true:false
 
-#sample_arr = [2,3,4,5,6,7,9]
-print "\nMy_any(%5==0) : "
+print "\nMy_any(multiple 5?) : "
 any_true = sample_arr.my_any? do |p|
   0 == p%5
 end
@@ -70,10 +72,6 @@ multiple = sample_arr.my_map do |p|
 end
 print multiple
 
-#change array
-sample_arr = [2,4,3]
-print "\nchanged array: #{sample_arr}"
-
 print "\nMy_inject(multiply all) : "
 def multiply_else(arr)
   result = arr.my_inject(1) do |stable,curr|
@@ -86,5 +84,6 @@ print multiply_else(sample_arr)
 print "\nMy_map(with proc, x3) : "
 multiply_3 = Proc.new{ |p| p*3 }
 print sample_arr.my_map(multiply_3)
+
 
 puts "\nend"
