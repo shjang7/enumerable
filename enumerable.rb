@@ -53,9 +53,11 @@ module Enumerable
     cnt
   end
   def my_map
-    for i in 0...arr.length
-      yield
+    new_arr=[]
+    for i in 0...self.length
+      new_arr << yield(self[i])
     end
+    new_arr
   end
   def my_inject
     curr = self[0]

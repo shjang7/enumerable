@@ -58,4 +58,16 @@ how_many = sample_arr.my_count do |p|
 end
 print how_many
 
+print "\nMy_count(multiple 3) : "
+how_many = sample_arr.my_count do |p|
+  0 == p%3
+end
+print how_many
+
+print "\nMy_map(x2) : "
+multiple = sample_arr.my_map do |p|
+  p*2
+end
+print multiple
+
 puts "\nend"
