@@ -10,8 +10,8 @@ module Enumerable
     end
   end
   def my_select
-    for i in 0...arr.length
-      yield
+    for i in 0...self.length
+      yield(self[i])
     end
   end
   def my_all?
