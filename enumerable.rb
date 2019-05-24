@@ -21,12 +21,17 @@ module Enumerable
         cnt-=1
       end
     end
-    cnt==0
+    0 == cnt
   end
   def my_any?
-    for i in 0...arr.length
-      yield
+    possible = false
+    for i in 0...self.length
+      if(true == yield(self[i]))
+        possible = true
+        break
+      end
     end
+    possible
   end
   def my_none?
     for i in 0...arr.length

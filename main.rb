@@ -1,11 +1,6 @@
 require "./enumerable.rb"
 
-def multiply_else(arr)
-  return arr.my_inject{|stable,new_num| stable*=new_num}
-end
-
-#puts multiply_else([2,4,5])
-sample_arr = [9,6,3,2]
+sample_arr = [9,6,3,2,5,4,7]
 
 print "My_each : "
 sample_arr.my_each{ |p| print "#{p} " }
@@ -31,5 +26,12 @@ all_true = sample_arr.my_all? do |p|
   p<10
 end
 print (true==all_true)?true:false
+
+#sample_arr = [9,6,3,2,5,4,7]
+print "\nMy_any(%5==0) : "
+any_true = sample_arr.my_any? do |p|
+  0 == p%5
+end
+print (true==any_true)?true:false
 
 puts "\nend"
