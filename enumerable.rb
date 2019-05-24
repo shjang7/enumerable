@@ -44,9 +44,13 @@ module Enumerable
     none
   end
   def my_count
-    for i in 0...arr.length
-      yield
+    cnt=0
+    for i in 0...self.length
+      if true == yield(self[i])
+        cnt+=1
+      end
     end
+    cnt
   end
   def my_map
     for i in 0...arr.length

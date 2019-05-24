@@ -12,7 +12,7 @@ require "./enumerable.rb"
 [10,5] -> 0== val%5?
 [] -> ?
 =end
-sample_arr = [9,6,3,2,5,4,7]
+sample_arr = [2,3,4,5,6,7,9]
 
 print "My_each : "
 sample_arr.my_each{ |p| print "#{p} " }
@@ -39,7 +39,7 @@ all_true = sample_arr.my_all? do |p|
 end
 print (true==all_true)?true:false
 
-#sample_arr = [9,6,3,2,5,4,7]
+#sample_arr = [2,3,4,5,6,7,9]
 print "\nMy_any(%5==0) : "
 any_true = sample_arr.my_any? do |p|
   0 == p%5
@@ -51,5 +51,11 @@ none_true = sample_arr.my_none? do |p|
   p > 10
 end
 print (true==none_true)?true:false
+
+print "\nMy_count(even) : "
+how_many = sample_arr.my_count do |p|
+  0 == p%2
+end
+print how_many
 
 puts "\nend"
