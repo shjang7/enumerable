@@ -34,4 +34,10 @@ any_true = sample_arr.my_any? do |p|
 end
 print (true==any_true)?true:false
 
+print "\nMy_none(greater than 10?) : "
+none_true = sample_arr.my_none? do |p|
+  p > 10
+end
+print (true==none_true)?true:false
+
 puts "\nend"

@@ -26,7 +26,7 @@ module Enumerable
   def my_any?
     possible = false
     for i in 0...self.length
-      if(true == yield(self[i]))
+      if true == yield(self[i])
         possible = true
         break
       end
@@ -34,9 +34,14 @@ module Enumerable
     possible
   end
   def my_none?
-    for i in 0...arr.length
-      yield
+    none = true
+    for i in 0...self.length
+      if true == yield(self[i])
+        none = false
+        break
+      end
     end
+    none
   end
   def my_count
     for i in 0...arr.length
