@@ -1,5 +1,4 @@
 require "./enumerable.rb"
-#include Enumerable
 
 =begin
 ** test case
@@ -54,15 +53,13 @@ none_true = sample_arr.my_none? do |p|
 end
 print (true==none_true)?true:false
 
+print "\nMy_count(all) : "
+how_many = sample_arr.my_count
+print how_many
+
 print "\nMy_count(even) : "
 how_many = sample_arr.my_count do |p|
   0 == p%2
-end
-print how_many
-
-print "\nMy_count(multiple 3) : "
-how_many = sample_arr.my_count do |p|
-  0 == p%3
 end
 print how_many
 
@@ -82,8 +79,7 @@ end
 print multiply_else(sample_arr)
 
 print "\nMy_map(with proc, x3) : "
-multiply_3 = Proc.new{ |p| p*3 }
-print sample_arr.my_map(multiply_3)
-
+divisible_3 = Proc.new{ |p| p*3 }
+print sample_arr.my_map(divisible_3)
 
 puts "\nend"

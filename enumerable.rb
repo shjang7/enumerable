@@ -3,6 +3,7 @@ module Enumerable
     for i in 0...self.length
       yield(self[i])
     end
+    self
   end
 
   def my_each_with_index
@@ -53,9 +54,13 @@ module Enumerable
 
   def my_count
     cnt=0
-    for i in 0...self.length
-      if true == yield(self[i])
-        cnt+=1
+    unless block_given?
+      cnt = self.length
+    else
+      for i in 0...self.length
+        if false != yield(self[i])
+          cnt+=1
+        end
       end
     end
     cnt
