@@ -1,9 +1,9 @@
 module Enumerable
   def my_each
-    for i in 0...self.length
-      yield(self[i])
+    return self.to_enum(:my_each) unless block_given?
+    for i in self
+      yield(i)
     end
-    self
   end
 
   def my_each_with_index
@@ -13,75 +13,91 @@ module Enumerable
   end
 
   def my_select
-    for i in 0...self.length
-      yield(self[i])
-    end
+    arr=[]
+    self.my_each { |p| arr << p if yield(p) }
+    arr
   end
 
-  def my_all?
-    return false if 0 == self.length
-    cnt = self.length
-    for i in 0...self.length
-      if true == yield(self[i])
-        cnt-=1
-      end
-    end
-    0 == cnt
-  end
-
-  def my_any?
-    return false if 0 == self.length
-    possible = false
-    for i in 0...self.length
-      if true == yield(self[i])
-        possible = true
-        break
-      end
-    end
-    possible
-  end
-
-  def my_none?
-    none = true
-    for i in 0...self.length
-      if true == yield(self[i])
-        none = false
-        break
-      end
-    end
-    none
-  end
-
-  def my_count
-    cnt=0
-    unless block_given?
-      cnt = self.length
+  def my_all?(pattern=nil)
+    if block_given?
+      self.my_each {|p| return false unless yield(p)}
+    elsif !pattern.nil?
+      self.my_each {|p| return false unless p.is_a?(pattern)}
     else
-      for i in 0...self.length
-        if false != yield(self[i])
-          cnt+=1
+      self.my_each {|p| return false unless p}
+    end
+    true
+  end
+
+  def my_any?(pattern=nil)
+    if block_given?
+      self.my_each { |p| return true if yield(p)}
+    elsif !pattern.nil?
+      self.my_each { |p| return true if p.is_a?(pattern)}
+    else
+      self.my_each { |p| return true if p }
+    end
+    false
+  end
+
+  def my_none?(pattern=nil)
+    if block_given?
+      self.my_each{ |p| return false if yield(p)}
+    elsif !pattern.nil?
+      self.my_each{ |p| return false if p.is_a?(pattern)}
+    else
+      self.my_each{ |p| return false if p}
+    end
+    true
+  end
+
+  def my_count(item=nil)
+    cnt=0
+    if item.nil?
+      unless block_given?
+        cnt = self.length
+      else
+        self.my_each do |p|
+          cnt+=1 if yield(p)
         end
       end
+    else
+      self.my_each{|p| cnt+=1 if p==item}
     end
     cnt
   end
 
   def my_map(proc=nil)
+    return self.to_enum(:my_each) unless block_given?
     new_arr=[]
-    for i in 0...self.length
-      if nil != proc
-        new_arr << proc.call(self[i])
+    for p in self
+      if !proc.nil?
+        new_arr << proc.call(p)
       else
-        new_arr << yield(self[i])
+        new_arr << yield(p)
       end
     end
     new_arr
   end
 
-  def my_inject(stable)
-    for i in 0...self.length
-      stable = yield(stable,self[i])
+  def my_inject(acc=nil)
+    i=0
+    for p in self
+      if 0==i && acc.nil?
+        acc = p
+        i+=1
+        next
+      end
+      acc = yield(acc,p)
+      i+=1
     end
-    stable
+    acc
   end
+end
+
+def multiply_else(arr)
+  result = arr.my_inject do |memo,curr|
+    memo*curr
+  end
+  result
 end
