@@ -10,7 +10,7 @@ The project is part of a series of projects to be completed by students of [Micr
 
 - Ruby
 
-## Test with 'irb'
+## Test methods working
 
 > Clone the repository to your local machine
 
@@ -22,6 +22,7 @@ $ git clone https://github.com/shjang7/enumerable-method.git
 
 ```sh
 $ irb
+irb(main):001:0>
 ```
 
 > Open the file from your IDE
@@ -30,7 +31,9 @@ $ irb
 PATH : ./enumerable-method/enumerable.rb
 ```
 
-> Copy each method to 'irb' and check working
+> Copy every method to 'irb'
+
+> If the method included related method(i.e. my_each), also you would test the related method previously
 
 ```sh
 > def my_each
@@ -41,8 +44,12 @@ PATH : ./enumerable-method/enumerable.rb
   end
 ```
 
-> If the method included related method(i.e. my_each), also you would test the related method previously
+> Compare with original enumerable method
 
+```sh
+> print [1,2,3,4].each {|p| p}
+> print [1,2,3,4].my_each {|p| p}
+```
 
 ## Contributors
 
