@@ -1,13 +1,48 @@
 # Ruby enumerable method implementations
 
 The solo project to test my understanding of the Enumerable methods in Ruby.
-Especially, I implemented methods for "each, each_with_index, select, all?, any?, none? count, map, inject".
+
+It covers enumerable methods "each, each_with_index, select, all?, any?, none? count, map, inject".
 
 The project is part of a series of projects to be completed by students of [Microverse](https://www.microverse.org/ "The Global School for Remote Software Developers!").
 
 ## Technologies
 
 - Ruby
+
+## Test with 'irb'
+
+> Clone the repository to your local machine
+
+```sh
+$ git clone https://github.com/shjang7/enumerable-method.git
+```
+
+> Open your 'irb'
+
+```sh
+$ irb
+```
+
+> Open the file from your IDE
+
+```sh
+PATH : ./enumerable-method/enumerable.rb
+```
+
+> Copy each method to 'irb' and check working
+
+```sh
+> def my_each
+    return self.to_enum(:my_each) unless block_given?
+    for i in self
+      yield(i)
+    end
+  end
+```
+
+> If the method included related method(i.e. my_each), also you would test the related method previously
+
 
 ## Contributors
 
