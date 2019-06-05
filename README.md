@@ -18,6 +18,12 @@ The project is part of a series of projects to be completed by students of [Micr
 $ git clone https://github.com/shjang7/enumerable-method.git
 ```
 
+> Go to your directory
+
+```sh
+$ cd enumerable-method
+```
+
 > Open your 'irb'
 
 ```sh
@@ -25,23 +31,10 @@ $ irb
 irb(main):001:0>
 ```
 
-> Open the file from your IDE
+> Call module using require with file location
 
 ```sh
-PATH : ./enumerable-method/enumerable.rb
-```
-
-> Copy every method to 'irb'
-
-> If the method included related method(i.e. my_each), also you would test the related method previously
-
-```sh
-> def my_each
-    return self.to_enum(:my_each) unless block_given?
-    for i in self
-      yield(i)
-    end
-  end
+> require "./lib/enumerable"
 ```
 
 > Compare with original enumerable method
