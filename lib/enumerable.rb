@@ -10,7 +10,7 @@ module Enumerable
   end
 
   def my_each_with_index
-    return to_enum(:each_with_index) unless block_given?
+    return to_enum(:my_each_with_index) unless block_given?
 
     i = 0
     my_each do |x|
